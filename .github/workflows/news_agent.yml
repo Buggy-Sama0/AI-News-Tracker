@@ -20,4 +20,4 @@ jobs:
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: python "RAG_Project/AI_News_Tracker_Analyst/Aegis_News_Agent.py"
+        run: python "AI_News_Tracker_Analyst/Aegis_News_Agent.py"
