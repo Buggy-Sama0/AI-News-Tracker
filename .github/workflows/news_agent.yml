@@ -2,7 +2,7 @@ name: Run News Agent
 
 on:
   schedule:
-    - cron: '0 8 * * *'  # Runs every day at 08:00 UTC
+    - cron: '0 1 * * *'  # Runs every day at 01:00 UTC (9:00 AM Hong Kong Time)
   workflow_dispatch:
 
 jobs:
