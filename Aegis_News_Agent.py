@@ -117,10 +117,19 @@ def send_discord_message(webhook_url: str, content: str):
 
 if __name__ == "__main__":
     report = agent_analyst()
-    # print(f'Type: {type(result)}')
     webhook_url=os.getenv('DISCORD_WEBHOOK_URL')
 
-    result = send_discord_message(webhook_url, report)
+    report_header = (
+        f"━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        f"📰 **AI NEWS REPORT**\n"
+        f"📅 **Feed Date:** {publish_date}\n"
+        f"━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
+    )
+    
+    # Combine the header with the AI analysis
+    full_message = report_header + report
+
+    result = send_discord_message(webhook_url, full_message)
     print('\n'+result)
 
     # output_path = os.path.join(os.path.dirname(__file__), 'AI.md')
