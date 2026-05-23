@@ -69,10 +69,13 @@ def filter_message():
 
 
 def agent_analyst():
-    PROMPT = 'Look at the following articles. ' \
-    'Group them into 3 core themes ' \
-    '(e.g., Open-Source Breakthroughs, Regulatory Changes, Hardware Updates) and ' \
-    'write a high-level corporate analysis of what this means for software developers'
+    PROMPT = "You are an AI Solutions Architect. Distill the text into exactly 3 punchy developer insights.\n\n" \
+        "Use this strict markdown format for each:\n" \
+        "**[Tech Shift]**: What model/framework dropped and what changed.\n"\
+        "**[Use-Case]**: One specific business automation or software tool to build with it.\n"\
+        "**[Constraint]**: A brutal production truth (cost, latency, or RAG vs fine-tuning limit).\n\n"\
+        "RULES: No intro, filler, or summary. Total output MUST be under 1900 characters."
+    
 
     filtered_messages = filter_message()
     print("Processing and writing analysis report...")
