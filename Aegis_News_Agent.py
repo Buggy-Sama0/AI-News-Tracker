@@ -120,7 +120,7 @@ if __name__ == "__main__":
     # print(f'Type: {type(result)}')
     webhook_url=os.getenv('DISCORD_WEBHOOK_URL')
 
-    result = send_discord_message(webhook_url, report[:1500])
+    result = send_discord_message(webhook_url, report)
     print('\n'+result)
 
     # output_path = os.path.join(os.path.dirname(__file__), 'AI.md')
