@@ -69,18 +69,34 @@ def filter_message():
 
 
 def agent_analyst():
-    PROMPT = "You are an AI Solutions Architect. Distill the text into exactly 3 punchy developer insights.\n\n" \
-        "Use this strict markdown format for each:\n" \
-        "**[Tech Shift]**: What model/framework dropped and what changed.\n"\
-        "**[Use-Case]**: One specific business automation or software tool to build with it.\n"\
-        "**[Constraint]**: A brutal production truth (cost, latency, or RAG vs fine-tuning limit).\n\n"\
-        "RULES: No intro, filler, or summary. Total output MUST be under 1900 characters."
+    # --- AGENTIC FOCUS ---
+    PROMPT_AGENTIC = (
+        "You are an Agentic AI Systems Architect. Distill the text into exactly 3 punchy, "
+        "highly technical insights focused on autonomous workflows and tool use.\n\n"
+        "Use this strict markdown format for each:\n"
+        "**[What I Get]**: The specific model update, framework breakthrough, or tool-calling capability released.\n"
+        "**[How to Leverage It]**: A concrete way to build an autonomous agentic system or multi-agent workflow with this (e.g., describe an Agent A to Agent B loop, or custom Python tool execution).\n"
+        "**[What to Keep in Mind]**: A brutal engineering reality regarding system state management, token overhead, cost, or how to avoid an infinite loop breakdown.\n\n"
+        "RULES: No intro, conversational filler, or final summary. Total output MUST be under 1,800 characters."
+    )
+
+    # --- BROAD AUTOMATION FOCUS ---
+    PROMPT_PRAGMATIC = (
+        "You are a Pragmatic AI Engineer. Distill the text into exactly 3 clear developer insights.\n\n"
+        "Use this strict markdown format for each:\n"
+        "**[What I Get]**: The core technology breakthrough, API release, or market update.\n"
+        "**[How to Leverage It]**: A concrete way to build an automation tool or software solution using this.\n"
+        "**[What to Keep in Mind]**: A brutal engineering reality regarding cost, speed, latency, or architectural limits.\n\n"
+        "RULES: No intro, filler, or summary. Total output MUST be under 1,800 characters."
+    )
+
+    CURRENT_PROMPT = PROMPT_PRAGMATIC
     
 
     filtered_messages = filter_message()
     print("Processing and writing analysis report...")
     messages = [
-        {"role": "system", "content": PROMPT},
+        {"role": "system", "content": CURRENT_PROMPT},
         {"role": "user", "content": filtered_messages}
     ]
 
